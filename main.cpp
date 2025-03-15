@@ -5,9 +5,7 @@ using namespace std;
 int main() {
   GameDecisionTree<Story> myGame;
 
-  string filename =
-      "../story.txt"; // This is necessary for me, I'm using CMAKE from cli and
-                      // run cmake --build . from build folder
+  string filename = "story.txt";
   //
   char delimiter = '|'; // '|' is the delimiter, change if needed
 
