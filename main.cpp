@@ -1,18 +1,21 @@
+#include "GameDecisionTree.h"
 #include <iostream>
 #include <string>
-#include "GameDecisionTree.h"
 using namespace std;
 int main() {
-    GameDecisionTree<Story> myGame;
+  GameDecisionTree<Story> myGame;
 
-    string filename = "story.txt";  // Specify the input file
-    char delimiter = '|';                // '|' is the delimiter, change if needed
+  string filename =
+      "../story.txt"; // This is necessary for me, I'm using CMAKE from cli and
+                      // run cmake --build . from build folder
+  //
+  char delimiter = '|'; // '|' is the delimiter, change if needed
 
-    // Load the story data from the file
-    myGame.loadStoryFromFile(filename, delimiter);
+  // Load the story data from the file
+  myGame.loadStoryFromFile(filename, delimiter);
 
-    // Start the game
-    myGame.playGame();
+  // Start the game
+  myGame.playGame();
 
-    return 0;
+  return 0;
 }
