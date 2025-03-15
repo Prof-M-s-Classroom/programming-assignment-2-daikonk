@@ -1,0 +1,73 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Compile Test
+      id: compile-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Compile Test
+        setup-command: ''
+        command: make
+        timeout: 10
+        max-score: 10
+    - name: File Structure Check
+      id: file-structure-check
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: File Structure Check
+        setup-command: ''
+        command: 'if [[ -f "main.cpp" && -f "Story.cpp" && -f "GameDecisionTree.h"
+          && -f "Node.h" && -f "Story.h" && -f "story.txt" ]]; then     echo "All
+          required files are present."     exit 0 else     echo "Error: One or more
+          required files are missing."     exit 1 fi'
+        timeout: 10
+        max-score: 5
+    - name: Basic Game execution
+      id: basic-game-execution
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic Game execution
+        setup-command: make
+        command: "./game"
+        timeout: 10
+        max-score: 10
+    - name: File Load test
+      id: file-load-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: File Load test
+        setup-command: make
+        command: ./game | grep "Welcome to the RPG"
+        timeout: 10
+        max-score: 10
+    - name: Minimum Tree Height
+      id: minimum-tree-height
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Minimum Tree Height
+        setup-command: make
+        command: ./game | grep -o "Height:" | wc -l
+        timeout: 10
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        COMPILE-TEST_RESULTS: "${{steps.compile-test.outputs.result}}"
+        FILE-STRUCTURE-CHECK_RESULTS: "${{steps.file-structure-check.outputs.result}}"
+        BASIC-GAME-EXECUTION_RESULTS: "${{steps.basic-game-execution.outputs.result}}"
+        FILE-LOAD-TEST_RESULTS: "${{steps.file-load-test.outputs.result}}"
+        MINIMUM-TREE-HEIGHT_RESULTS: "${{steps.minimum-tree-height.outputs.result}}"
+      with:
+        runners: compile-test,file-structure-check,basic-game-execution,file-load-test,minimum-tree-height
