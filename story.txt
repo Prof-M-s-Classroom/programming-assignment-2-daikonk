@@ -1,7 +1,12 @@
 1|You wake up in a forest clearing. There are two paths.|2|3
 2|You follow the path to the left and encounter a river.|4|5
 3|You go right and find an old cabin.|6|7
-4|You swim across the river and find a treasure chest.|-1|-1
-5|You find a hidden passageway that leads to a secret room.|-1|-1
-6|The cabin is empty. You find a trapdoor leading downwards.|-1|-1
-7|Explosions.|-1|-1
+4|You die|-1|-1
+5|You find a hidden passageway that leads to a secret room.|14|9
+6|The cabin is empty. You starve.|-1|-1
+7|You hear explosions in the distance. Smoke rises from beyond the trees.|10|11
+9|The chest is trapped! Poisonous gas fills the air around you.|-1|-1
+10|The secret room is filled with ancient tomes and scrolls.|-1|-1
+11|You discover a sleeping dragon curled up in the corner of the room.|14|13
+13|Beneath the cabin lies a laboratory with strange bubbling potions where u die.|-1|-1
+14|The treasure chest contains a magical amulet that glows faintly.|-1|-1

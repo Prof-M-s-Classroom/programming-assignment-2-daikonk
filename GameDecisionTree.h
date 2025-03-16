@@ -66,14 +66,34 @@ public:
     // I decided to go with a recursive approach here because it would be
     // simpler, I also plan to do an itterative bfs for print debugging on my
     // tree
-    Node<Story> *root = buildTree(stories, stories.begin()->first);
-    printTreeBfs(root);
-
-    return;
+    this->root = buildTree(stories, stories.begin()->first);
+    printTreeBfs(this->root);
   }
 
   // TODO: Function to start the game and traverse the tree based on user input
-  void playGame() {}
+  void playGame() {
+    Node<Story> *node = root;
+    string input;
+    while (node) {
+      cout << node->data.description << endl;
+      if (node->data.leftEventNumber != -1 &&
+          node->data.rightEventNumber != -1) {
+        cout << "Enter 1 or 2 to make your decision" << endl;
+        cin >> input;
+        cout << endl;
+      }
+
+      if (input == "1") {
+        node = node->left;
+      } else if (input == "2") {
+        node = node->right;
+      } else {
+        cout << "invalid input, " << endl;
+      }
+    };
+
+    cout << "finished game" << endl;
+  }
 
 private:
   Node<Story> *buildTree(const std::map<int, Story> &stories, int rootNum) {
@@ -82,7 +102,7 @@ private:
     }
 
     Story currStory = stories.at(rootNum);
-    cout << "found " << rootNum << endl;
+
     Node<Story> *root = new Node<Story>(currStory);
 
     root->left = buildTree(stories, currStory.leftEventNumber);
