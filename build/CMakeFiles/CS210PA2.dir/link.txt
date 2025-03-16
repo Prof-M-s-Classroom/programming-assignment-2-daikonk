@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/CS210PA2.dir/main.cpp.o CMakeFiles/CS210PA2.dir/Story.cpp.o -o CS210PA2  /usr/lib/x86_64-linux-gnu/libcurl.so 

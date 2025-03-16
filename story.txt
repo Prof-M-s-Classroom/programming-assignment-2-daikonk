@@ -1,6 +1,13 @@
-1 | You wake up in a forest clearing. There are two paths. | 2 | 3
-2 | You follow the path to the left and encounter a river. | 4 | 5
-3 | You go right and find an old cabin. | 5 | 6
-4 | You swim across the river and find a treasure chest. | -1 | -1
-5 | You find a hidden passageway that leads to a secret room. | 7 | -1
-6 | The cabin is empty. You find a trapdoor leading downwards. | -1
+1|You find yourself in a dusty frontier town at high noon. The saloon is to your left, and the sheriff’s office to your right. Option 1: Head into the saloon to look for information. Option 2: Visit the sheriff’s office to check the wanted posters.|2|3
+2|Inside the saloon, the air is thick with cigar smoke and chatter. The bartender eyes you suspiciously. Option 1: Order a drink to blend in. Option 2: Ask the bartender about local rumors.|4|5
+3|At the sheriff’s office, you see a poster about a notorious bandit. Option 1: Ask the sheriff for more details. Option 2: Head out and look for the bounty yourself.|5|6
+4|Your drink is drugged, and you wake up tied to a chair in a dim room. Option 1: Attempt to untie yourself. Option 2: Shout for help.|7|8
+5|You learn of a hidden gold stash in the nearby hills. Option 1: Head to the hills to search for the gold. Option 2: Wait until night to sneak out safely.|9|10
+6|You take the poster and decide to track the bandit down. Option 1: Head to the last known campsite of the bandit. Option 2: Search the nearby valley for signs of the gang.|10|11
+7|You manage to free yourself and sneak out of the back room, escaping into the night where a horse waits. You ride off, seeking a new life far from the town. Your adventure ends here.|-1|-1
+8|Your shouting attracts attention and the bartender enters, offering you a deal. You work together to uncover corruption in the town, becoming a local hero. Your adventure ends here.|-1|-1
+9|In the hills, you find the stash guarded by rattlesnakes. Option 1: Try to scare them away. Option 2: Search for another way to the stash.|12|10
+10|Thieves ambush you, but you skillfully escape into the cover of a rocky outcrop, only to realize you must choose a different path forward. Option 1: Sneak back to town in disguise. Option 2: Try to negotiate with the bandits.|13|11
+11|You confront the bandits and convince them to hand over a share of their loot in exchange for their freedom. Rich and satisfied with your adventure, you decide to return to the town for more exploits. Your journey concludes here.|-1|-1
+12|You successfully scare away the snakes and uncover a vast fortune in gold. Your reputation as a treasure hunter quickly spreads across the Wild West. Your adventure concludes here.|-1|-1
+13|In disguise, you gather more information about the bandits' hideout, leading you to become an undercover marshal, putting an end to their crimes. Your adventure ends here.|-1|-1
