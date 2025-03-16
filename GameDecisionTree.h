@@ -24,6 +24,28 @@ public:
 
   // TODO: Function to load story data from a text file and build the binary
   // tree
+
+  bool writeToFile(string &filename, string &story) {
+    std::ofstream outputFile(filename);
+
+    if (!outputFile.is_open()) {
+      std::cerr << "Error: could not open file: " << filename << endl;
+      return false;
+    }
+
+    outputFile << story;
+
+    if (outputFile.fail()) {
+      outputFile.close();
+      std::cerr << "Error: failed to write to file: " << filename << endl;
+      return false;
+    }
+
+    outputFile.close();
+
+    return true;
+  }
+
   void loadStoryFromFile(const std::string &filename, char delimiter) {
 
     std::ifstream file(filename);
@@ -70,7 +92,7 @@ public:
     // simpler, I also plan to do an itterative bfs for print debugging on my
     // tree
     this->root = buildTree(stories, stories.begin()->first);
-    printTreeBfs(this->root);
+    // printTreeBfs(this->root);
   }
 
   // TODO: Function to start the game and traverse the tree based on user input

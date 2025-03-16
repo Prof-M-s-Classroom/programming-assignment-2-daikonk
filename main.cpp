@@ -35,17 +35,21 @@ int main() {
     cin >> apiKey;
 
     cout << "Now, write a short description of the theme of the story" << endl;
-    cin >> theme;
+    std::getline(std::cin >> std::ws, theme);
 
     cout << "Thinking..." << endl;
-    LLM llm(apiKey, theme);
-    res = llm.generate(choice);
-    cout << res << endl;
+    LLM llm(apiKey, theme, choice);
+    res = llm.generate();
 
     if (res[0] != '{') {
+      cout << "Successfully Generated!" << endl;
       break;
+    } else {
+      cout << res << endl;
     }
   }
+
+  myGame.writeToFile(filename, res);
 
   // Load the story data from the file
   myGame.loadStoryFromFile(filename, delimiter);
