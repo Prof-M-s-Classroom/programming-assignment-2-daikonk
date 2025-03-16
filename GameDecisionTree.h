@@ -10,11 +10,13 @@
 #include <map>
 #include <sstream>
 #include <stdexcept>
+#include <unordered_map>
 #include <vector>
 
 template <typename T> class GameDecisionTree {
 private:
   Node<T> *root;
+  std::unordered_map<int, Node<T> *> seen;
 
 public:
   // TODO: Constructor
@@ -28,6 +30,7 @@ public:
     std::string line;
     std::string temp;
     std::map<int, Story> stories;
+    std::unordered_map<int, Node<T> *> seen;
 
     if (!file.is_open()) {
       std::cerr << "Error: could not open file: " << filename << endl;
@@ -101,9 +104,16 @@ private:
       return nullptr;
     }
 
-    Story currStory = stories.at(rootNum);
+    // seen.find will return seen.end if the search fails, we want this search
+    // to fail to make sure it is a new node.
+    if (seen.find(rootNum) != seen.end()) {
+      return seen[rootNum];
+    }
 
+    Story currStory = stories.at(rootNum);
     Node<Story> *root = new Node<Story>(currStory);
+
+    seen[rootNum] = root;
 
     root->left = buildTree(stories, currStory.leftEventNumber);
     root->right = buildTree(stories, currStory.rightEventNumber);
@@ -114,6 +124,7 @@ private:
   void printTreeBfs(Node<Story> *root) {
 
     std::vector<Node<Story> *> q;
+    std::unordered_map<Node<Story> *, bool> seen;
     q.push_back(root);
 
     while (!q.empty()) {
@@ -124,12 +135,14 @@ private:
       std::cout << "Story " << curr->data.eventNumber << ": "
                 << curr->data.description << endl;
 
-      if (curr->left) {
+      if (curr->left && !seen[curr->left]) {
         q.push_back(curr->left);
+        seen[curr->left] = true;
       }
 
-      if (curr->right) {
+      if (curr->right && !seen[curr->right]) {
         q.push_back(curr->right);
+        seen[curr->right] = true;
       }
     }
   }

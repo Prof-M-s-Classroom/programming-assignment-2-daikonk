@@ -12,3 +12,8 @@ include_directories(.)
 add_executable(CS210PA2
         main.cpp
         Story.cpp)
+
+find_package(CURL REQUIRED)
+include_directories(${CURL_INCLUDE_DIRS})
+target_link_libraries(CS210PA2 ${CURL_LIBRARIES})
+

@@ -108,6 +108,7 @@ CS210PA2_EXTERNAL_OBJECTS =
 CS210PA2: CMakeFiles/CS210PA2.dir/main.cpp.o
 CS210PA2: CMakeFiles/CS210PA2.dir/Story.cpp.o
 CS210PA2: CMakeFiles/CS210PA2.dir/build.make
+CS210PA2: /usr/lib/x86_64-linux-gnu/libcurl.so
 CS210PA2: CMakeFiles/CS210PA2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/crest/repos/programming-assignment-2-daikonk/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable CS210PA2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CS210PA2.dir/link.txt --verbose=$(VERBOSE)
